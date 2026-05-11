@@ -194,8 +194,6 @@ export default function LandingPage() {
         title={<>who we<br />are.</>}
         body="A short introduction to Frontier Creatives: why the room exists, who it is for, and why creative professionals need a better place to learn together."
         cta="Watch intro"
-        videoUrl="https://player.vimeo.com/video/1191272020"
-        tall
       />
 
       <VideoStorySection
@@ -203,7 +201,8 @@ export default function LandingPage() {
         title={<>what we<br />value.</>}
         body="A statement of taste and operating principles: curiosity, generosity, process transparency, craft, useful experimentation, and shipping real work."
         cta="Watch values"
-        videoUrl="https://player.vimeo.com/video/1191120732"
+        videoUrl="https://player.vimeo.com/video/1191272020"
+        tall
       />
 
       <VideoStorySection
