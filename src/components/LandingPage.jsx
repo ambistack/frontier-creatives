@@ -65,8 +65,14 @@ export default function LandingPage() {
         <header className="flex items-center justify-between border-b border-brand-blue pb-4 text-brand-blue">
           <div className="flex items-center gap-3 uppercase text-[10px] sm:text-xs tracking-[0.22em] font-black">
             <GuidanceIcon name="location" className="w-6 h-6 sm:w-8 sm:h-8" />
-            <span className="hidden sm:inline">Seattle / Creative Systems</span>
-            <span className="sm:hidden">Seattle</span>
+            <span className="hidden sm:inline">
+              <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Puget Sound Labs</a>
+              {" "}* Seattle
+            </span>
+            <span className="sm:hidden">
+              <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">PSL</a>
+              {" "}* Seattle
+            </span>
           </div>
           <div className="flex gap-1 sm:gap-2">
             <div className="hidden sm:flex gap-2">
