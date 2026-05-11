@@ -135,7 +135,6 @@ export default function LandingPage() {
           <div className="flex gap-1 sm:gap-2">
             <div className="hidden sm:flex gap-2">
               <FlipPill />
-              <Pill icon="camera">motion</Pill>
               <Pill icon="meeting">new here?</Pill>
             </div>
             <div className="sm:hidden">
