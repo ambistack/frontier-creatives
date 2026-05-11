@@ -186,41 +186,59 @@ export default function RsvpPage() {
     'other':      'Other',
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     if (e) e.preventDefault();
     if (submitting) return;
     setSubmitting(true);
 
-    const body = new URLSearchParams();
-    body.append(ENTRY_IDS.fullName, form.fullName);
-    body.append(ENTRY_IDS.email, form.email);
-    body.append(ENTRY_IDS.link, form.link);
+    // Build form data
+    const formData = new URLSearchParams();
+    formData.append(ENTRY_IDS.fullName, form.fullName);
+    formData.append(ENTRY_IDS.email, form.email);
+    formData.append(ENTRY_IDS.link, form.link);
 
     // Checkboxes — append each selected role as a separate entry with the same key
     form.role.forEach((role) => {
-      body.append(ENTRY_IDS.role, role);
+      formData.append(ENTRY_IDS.role, role);
     });
 
-    body.append(ENTRY_IDS.aiTools, form.aiTools);
-    body.append(ENTRY_IDS.building, form.building);
-    body.append(ENTRY_IDS.hopes, form.hopes);
-    body.append(ENTRY_IDS.presentation, PRESENTATION_GOOGLE_MAP[form.presentation] || '');
-    body.append(ENTRY_IDS.heardFrom, form.heardFrom);
-    body.append(ENTRY_IDS.situation, SITUATION_GOOGLE_MAP[form.situation] || '');
+    formData.append(ENTRY_IDS.aiTools, form.aiTools);
+    formData.append(ENTRY_IDS.building, form.building);
+    formData.append(ENTRY_IDS.hopes, form.hopes);
+    formData.append(ENTRY_IDS.presentation, PRESENTATION_GOOGLE_MAP[form.presentation] || '');
+    formData.append(ENTRY_IDS.heardFrom, form.heardFrom);
+    formData.append(ENTRY_IDS.situation, SITUATION_GOOGLE_MAP[form.situation] || '');
 
-    try {
-      await fetch(
-        `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`,
-        {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: body.toString(),
-        }
-      );
-    } catch (_) {
-      // no-cors mode suppresses errors — submission succeeds silently
-    }
+    // Create a hidden iframe + form to submit — Google Forms blocks fetch, but this
+    // behaves exactly like a real form submission and always goes through
+    const iframe = document.createElement('iframe');
+    iframe.name = 'hidden-rsvp-iframe';
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+
+    const formEl = document.createElement('form');
+    formEl.method = 'POST';
+    formEl.action = `https://docs.google.com/forms/d/${GOOGLE_FORM_ID}/formResponse`;
+    formEl.target = 'hidden-rsvp-iframe';
+    formEl.style.display = 'none';
+
+    // Append hidden inputs from URLSearchParams
+    formData.forEach((value, key) => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = value;
+      formEl.appendChild(input);
+    });
+
+    document.body.appendChild(formEl);
+    formEl.submit();
+
+    // Clean up after a short delay
+    setTimeout(() => {
+      document.body.removeChild(formEl);
+      document.body.removeChild(iframe);
+    }, 1000);
 
     setSubmitted(true);
     setSubmitting(false);
