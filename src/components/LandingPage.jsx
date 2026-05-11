@@ -78,7 +78,7 @@ export default function LandingPage() {
           <div className="flex items-center gap-3 uppercase text-[10px] sm:text-xs tracking-[0.22em] font-black">
             <GuidanceIcon name="location" className="w-6 h-6 sm:w-8 sm:h-8" />
             <span className="hidden sm:inline">
-              <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Puget Sound Labs</a>
+              <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Pioneer Square Labs</a>
               {" "}• Seattle
             </span>
             <span className="sm:hidden">
@@ -163,7 +163,7 @@ export default function LandingPage() {
               <GuidanceIcon name="museum" className="w-14 h-14 sm:w-20 sm:h-20" />
             </div>
             <div>
-              <NumberTag>Puget Sound Labs / Seattle</NumberTag>
+              <NumberTag>Pioneer Square Labs / Seattle</NumberTag>
               <p className="mt-5 text-2xl sm:text-3xl md:text-6xl leading-[0.9] tracking-[-0.07em] font-black">
                 Build an explainer, steal the workflow, remix the system.
               </p>
@@ -181,6 +181,7 @@ export default function LandingPage() {
         title={<>who we<br />are.</>}
         body="A short introduction to Frontier Creatives: why the room exists, who it is for, and why creative professionals need a better place to learn together."
         cta="Watch intro"
+        videoUrl="https://player.vimeo.com/video/1191272020"
       />
 
       <VideoStorySection
