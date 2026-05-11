@@ -245,6 +245,8 @@ export default function LandingPage() {
         title={<>inside the<br />event.</>}
         body="A preview of the format: quick intro, lightning demos, live workflow breakdowns, open discussion, and room for people to meet through the work."
         cta="Watch format"
+        videoUrl="https://player.vimeo.com/video/1191288057"
+        tall
       />
 
       {/* Footer */}
