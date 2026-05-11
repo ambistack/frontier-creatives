@@ -2,7 +2,6 @@
 
 import { useState } from 'react';
 import GuidanceIcon from './GuidanceIcon';
-import { getSupabase } from '../lib/supabase';
 
 // ——— Reused Design System Primitives ———
 
@@ -157,36 +156,37 @@ export default function RsvpPage() {
     }));
   };
 
-  const [error, setError] = useState(null);
-
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     if (e) e.preventDefault();
     if (submitting) return;
     setSubmitting(true);
-    setError(null);
 
-    const supabaseClient = getSupabase();
-    const { error: insertError } = await supabaseClient
-      .from('rsvp_submissions')
-      .insert({
-        full_name: form.fullName,
-        email: form.email,
-        link: form.link || null,
-        roles: form.role.length > 0 ? form.role : null,
-        ai_tools: form.aiTools,
-        building: form.building,
-        hopes: form.hopes,
-        presentation: form.presentation || null,
-        heard_from: form.heardFrom || null,
-        situation: form.situation || null,
-      });
+    // Map form values to Google Form entry IDs via a pre-filled URL.
+    // This opens a browser tab with all fields filled in — user confirms
+    // one click and the data lands directly in the linked Google Sheet.
+    const params = new URLSearchParams();
+    params.set('entry.2023085978', form.fullName);        // Full Name
+    params.set('entry.1996128041', form.email);           // Email
+    params.set('entry.1468278510', form.link);            // Link
+    form.role.forEach((r) => params.append('entry.464828348', r)); // Roles
+    params.set('entry.632376268', form.aiTools);          // AI Tools
+    params.set('entry.840674314', form.building);         // Building
+    params.set('entry.283705538', form.hopes);            // Hopes
+    params.set('entry.1452363108', (() => {               // Lightning
+      const map = { yes: 'Yes', maybe: 'Maybe', 'not-yet': 'Not yet' };
+      return map[form.presentation] || '';
+    })());
+    params.set('entry.1032852867', form.heardFrom);       // Heard from
+    params.set('entry.252203705', (() => {                 // Situation
+      const map = { employed: 'Full-time employed', freelance: 'Freelance / independent', founder: 'Founder / building something', student: 'Student', exploring: 'Exploring new opportunities', other: 'Other' };
+      return map[form.situation] || '';
+    })());
 
-    if (insertError) {
-      setError('Something went wrong. Please try again or email us directly.');
-      setSubmitting(false);
-      return;
-    }
+    const prefillUrl =
+      'https://docs.google.com/forms/d/1PcokaTU6DN_-VEtIK9ibeKniUuoOf7YtBkvHN-EZUW0/viewform?usp=pp_url&' +
+      params.toString();
 
+    window.open(prefillUrl, '_blank');
     setSubmitted(true);
     setSubmitting(false);
   };
