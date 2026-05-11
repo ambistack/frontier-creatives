@@ -498,10 +498,20 @@ export default function RsvpPage() {
               <button
                 type="button"
                 onClick={handleSubmit}
-                className="mt-8 border border-brand-blue text-brand-blue px-10 py-5 uppercase tracking-[0.2em] text-xs sm:text-sm font-black hover:bg-brand-blue hover:text-brand-cream transition-colors"
+                disabled={submitting}
+                className={`mt-8 border border-brand-blue px-10 py-5 uppercase tracking-[0.2em] text-xs sm:text-sm font-black transition-colors ${
+                  submitting
+                    ? 'text-brand-blue/40 cursor-not-allowed'
+                    : 'text-brand-blue hover:bg-brand-blue hover:text-brand-cream'
+                }`}
               >
-                Request Invite →
+                {submitting ? 'Submitting...' : 'Request Invite →'}
               </button>
+              {error && (
+                <p className="mt-4 text-sm sm:text-base font-black text-red-600 max-w-lg leading-[1.15]">
+                  {error}
+                </p>
+              )}
               <p className="mt-5 text-base sm:text-lg tracking-[-0.02em] font-black text-black/50 max-w-lg leading-[1.15]">
                 Attendance is intentionally curated to preserve a thoughtful, high-signal environment.
               </p>
