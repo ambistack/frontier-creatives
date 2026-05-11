@@ -29,19 +29,20 @@ const FlipPill = () => {
       setTimeout(() => {
         setIndex((prev) => (prev + 1) % FLIP_FRAMES.length);
         setExiting(false);
-      }, 450);
+      }, 400);
     }, 3000);
     return () => clearInterval(timer.current);
   }, []);
 
   return (
-    <div className="flex items-center gap-3 border border-brand-blue px-3 py-2 text-brand-blue uppercase tracking-[0.16em] text-[10px] md:text-xs font-black perspective-[400px]">
+    <div className="flex items-center gap-3 border border-brand-blue px-3 py-2 text-brand-blue uppercase tracking-[0.16em] text-[10px] md:text-xs font-black">
       <GuidanceIcon name="calendar" className="w-6 h-6 shrink-0" />
-      <span
-        className={exiting ? 'animate-flip-out' : 'animate-flip-in'}
-        style={{ display: 'inline-block', transformOrigin: 'center bottom' }}
-      >
-        {FLIP_FRAMES[index]}
+      <span className="relative overflow-hidden" style={{ width: '7.2em', height: '1.2em' }}>
+        <span
+          className={`absolute inset-x-0 ${exiting ? 'animate-slide-out' : 'animate-slide-in'}`}
+        >
+          {FLIP_FRAMES[index]}
+        </span>
       </span>
     </div>
   );
