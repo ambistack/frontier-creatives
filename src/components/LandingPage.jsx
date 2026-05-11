@@ -17,7 +17,7 @@ const Pill = ({ icon, children }) => (
 
 const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl }) => (
   <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
-    <div className="grid lg:grid-cols-12 gap-8 items-stretch">
+    <div className={`grid lg:grid-cols-12 gap-8 ${videoUrl ? 'items-start' : 'items-stretch'}`}>
       <div className="lg:col-span-8 flex flex-col justify-between min-h-[20rem] md:min-h-[34rem]">
         <div>
           <NumberTag>{eyebrow}</NumberTag>
@@ -30,9 +30,9 @@ const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl }) => (
         </p>
       </div>
 
-      <div className="lg:col-span-4 border border-brand-blue text-brand-blue min-h-[24rem] md:min-h-[34rem] flex flex-col">
+      <div className={`lg:col-span-4 border border-brand-blue text-brand-blue flex flex-col ${videoUrl ? 'h-auto' : 'min-h-[24rem] md:min-h-[34rem]'}`}>
         {videoUrl ? (
-          <div className="flex-1 relative overflow-hidden">
+          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
             <iframe
               src={videoUrl}
               className="absolute inset-0 w-full h-full"
