@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import GuidanceIcon from './GuidanceIcon';
+import { getSupabase } from '../lib/supabase';
 
 // ——— Reused Design System Primitives ———
 
@@ -156,89 +157,35 @@ export default function RsvpPage() {
     }));
   };
 
-  const GOOGLE_FORM_ID = '1PcokaTU6DN_-VEtIK9ibeKniUuoOf7YtBkvHN-EZUW0';
+  const [error, setError] = useState(null);
 
-  const ENTRY_IDS = {
-    fullName:     'entry.2023085978',
-    email:        'entry.1996128041',
-    link:         'entry.1468278510',
-    role:         'entry.464828348',
-    aiTools:      'entry.632376268',
-    building:     'entry.840674314',
-    hopes:        'entry.283705538',
-    presentation: 'entry.1452363108',
-    heardFrom:    'entry.1032852867',
-    situation:    'entry.252203705',
-  };
-
-  const PRESENTATION_GOOGLE_MAP = {
-    'yes':      'Yes',
-    'maybe':    'Maybe',
-    'not-yet':  'Not yet',
-  };
-
-  const SITUATION_GOOGLE_MAP = {
-    'employed':   'Full-time employed',
-    'freelance':  'Freelance / independent',
-    'founder':    'Founder / building something',
-    'student':    'Student',
-    'exploring':  'Exploring new opportunities',
-    'other':      'Other',
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (e) e.preventDefault();
     if (submitting) return;
     setSubmitting(true);
+    setError(null);
 
-    // Build form data
-    const formData = new URLSearchParams();
-    formData.append(ENTRY_IDS.fullName, form.fullName);
-    formData.append(ENTRY_IDS.email, form.email);
-    formData.append(ENTRY_IDS.link, form.link);
+    const supabaseClient = getSupabase();
+    const { error: insertError } = await supabaseClient
+      .from('rsvp_submissions')
+      .insert({
+        full_name: form.fullName,
+        email: form.email,
+        link: form.link || null,
+        roles: form.role.length > 0 ? form.role : null,
+        ai_tools: form.aiTools,
+        building: form.building,
+        hopes: form.hopes,
+        presentation: form.presentation || null,
+        heard_from: form.heardFrom || null,
+        situation: form.situation || null,
+      });
 
-    // Checkboxes — append each selected role as a separate entry with the same key
-    form.role.forEach((role) => {
-      formData.append(ENTRY_IDS.role, role);
-    });
-
-    formData.append(ENTRY_IDS.aiTools, form.aiTools);
-    formData.append(ENTRY_IDS.building, form.building);
-    formData.append(ENTRY_IDS.hopes, form.hopes);
-    formData.append(ENTRY_IDS.presentation, PRESENTATION_GOOGLE_MAP[form.presentation] || '');
-    formData.append(ENTRY_IDS.heardFrom, form.heardFrom);
-    formData.append(ENTRY_IDS.situation, SITUATION_GOOGLE_MAP[form.situation] || '');
-
-    // Create a hidden iframe + form to submit — Google Forms blocks fetch, but this
-    // behaves exactly like a real form submission and always goes through
-    const iframe = document.createElement('iframe');
-    iframe.name = 'hidden-rsvp-iframe';
-    iframe.style.display = 'none';
-    document.body.appendChild(iframe);
-
-    const formEl = document.createElement('form');
-    formEl.method = 'POST';
-    formEl.action = `https://docs.google.com/forms/d/${GOOGLE_FORM_ID}/formResponse`;
-    formEl.target = 'hidden-rsvp-iframe';
-    formEl.style.display = 'none';
-
-    // Append hidden inputs from URLSearchParams
-    formData.forEach((value, key) => {
-      const input = document.createElement('input');
-      input.type = 'hidden';
-      input.name = key;
-      input.value = value;
-      formEl.appendChild(input);
-    });
-
-    document.body.appendChild(formEl);
-    formEl.submit();
-
-    // Clean up after a short delay
-    setTimeout(() => {
-      document.body.removeChild(formEl);
-      document.body.removeChild(iframe);
-    }, 1000);
+    if (insertError) {
+      setError('Something went wrong. Please try again or email us directly.');
+      setSubmitting(false);
+      return;
+    }
 
     setSubmitted(true);
     setSubmitting(false);
