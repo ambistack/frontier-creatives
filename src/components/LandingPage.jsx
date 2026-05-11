@@ -1,5 +1,6 @@
 'use client';
 
+import { useState, useEffect, useRef } from 'react';
 import GuidanceIcon from './GuidanceIcon';
 
 const NumberTag = ({ children }) => (
@@ -14,6 +15,37 @@ const Pill = ({ icon, children }) => (
     <span>{children}</span>
   </div>
 );
+
+const FLIP_FRAMES = ['Next session:', 'May 27th'];
+
+const FlipPill = () => {
+  const [index, setIndex] = useState(0);
+  const [exiting, setExiting] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => {
+    timer.current = setInterval(() => {
+      setExiting(true);
+      setTimeout(() => {
+        setIndex((prev) => (prev + 1) % FLIP_FRAMES.length);
+        setExiting(false);
+      }, 450);
+    }, 3000);
+    return () => clearInterval(timer.current);
+  }, []);
+
+  return (
+    <div className="flex items-center gap-3 border border-brand-blue px-3 py-2 text-brand-blue uppercase tracking-[0.16em] text-[10px] md:text-xs font-black perspective-[400px]">
+      <GuidanceIcon name="calendar" className="w-6 h-6 shrink-0" />
+      <span
+        className={exiting ? 'animate-flip-out' : 'animate-flip-in'}
+        style={{ display: 'inline-block', transformOrigin: 'center bottom' }}
+      >
+        {FLIP_FRAMES[index]}
+      </span>
+    </div>
+  );
+};
 
 const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl, tall }) => (
   <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
@@ -101,7 +133,7 @@ export default function LandingPage() {
           </div>
           <div className="flex gap-1 sm:gap-2">
             <div className="hidden sm:flex gap-2">
-              <Pill icon="calendar">sessions</Pill>
+              <FlipPill />
               <Pill icon="camera">motion</Pill>
               <Pill icon="meeting">open lab</Pill>
             </div>
