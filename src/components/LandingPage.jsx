@@ -67,11 +67,11 @@ export default function LandingPage() {
             <GuidanceIcon name="location" className="w-6 h-6 sm:w-8 sm:h-8" />
             <span className="hidden sm:inline">
               <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Puget Sound Labs</a>
-              {" "}* Seattle
+              {" "}• Seattle
             </span>
             <span className="sm:hidden">
               <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">PSL</a>
-              {" "}* Seattle
+              {" "}• Seattle
             </span>
           </div>
           <div className="flex gap-1 sm:gap-2">
