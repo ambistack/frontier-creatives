@@ -212,9 +212,9 @@ export default function LandingPage() {
               <p className="mt-5 text-2xl sm:text-3xl md:text-6xl leading-[0.9] tracking-[-0.07em] font-black">
                 Build an explainer, steal the workflow, remix the system.
               </p>
-              <button className="mt-8 w-full border border-brand-blue text-brand-blue py-4 uppercase tracking-[0.2em] text-xs font-black hover:bg-brand-blue hover:text-brand-cream transition-colors">
+              <a href="/rsvp" className="mt-8 w-full border border-brand-blue text-brand-blue py-4 uppercase tracking-[0.2em] text-xs font-black hover:bg-brand-blue hover:text-brand-cream transition-colors text-center block">
                 Request invite →
-              </button>
+              </a>
             </div>
           </div>
         </div>
