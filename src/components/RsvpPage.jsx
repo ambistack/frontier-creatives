@@ -140,6 +140,7 @@ export default function RsvpPage() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -155,9 +156,74 @@ export default function RsvpPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const GOOGLE_FORM_ID = '1PcokaTU6DN_-VEtIK9ibeKniUuoOf7YtBkvHN-EZUW0';
+
+  const ENTRY_IDS = {
+    fullName:     'entry.2023085978',
+    email:        'entry.1996128041',
+    link:         'entry.1468278510',
+    role:         'entry.464828348',
+    aiTools:      'entry.632376268',
+    building:     'entry.840674314',
+    hopes:        'entry.283705538',
+    presentation: 'entry.1452363108',
+    heardFrom:    'entry.1032852867',
+    situation:    'entry.252203705',
+  };
+
+  const PRESENTATION_GOOGLE_MAP = {
+    'yes':      'Yes',
+    'maybe':    'Maybe',
+    'not-yet':  'Not yet',
+  };
+
+  const SITUATION_GOOGLE_MAP = {
+    'employed':   'Full-time employed',
+    'freelance':  'Freelance / independent',
+    'founder':    'Founder / building something',
+    'student':    'Student',
+    'exploring':  'Exploring new opportunities',
+    'other':      'Other',
+  };
+
+  const handleSubmit = async (e) => {
     if (e) e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+
+    const body = new URLSearchParams();
+    body.append(ENTRY_IDS.fullName, form.fullName);
+    body.append(ENTRY_IDS.email, form.email);
+    body.append(ENTRY_IDS.link, form.link);
+
+    // Checkboxes — append each selected role as a separate entry with the same key
+    form.role.forEach((role) => {
+      body.append(ENTRY_IDS.role, role);
+    });
+
+    body.append(ENTRY_IDS.aiTools, form.aiTools);
+    body.append(ENTRY_IDS.building, form.building);
+    body.append(ENTRY_IDS.hopes, form.hopes);
+    body.append(ENTRY_IDS.presentation, PRESENTATION_GOOGLE_MAP[form.presentation] || '');
+    body.append(ENTRY_IDS.heardFrom, form.heardFrom);
+    body.append(ENTRY_IDS.situation, SITUATION_GOOGLE_MAP[form.situation] || '');
+
+    try {
+      await fetch(
+        `https://docs.google.com/forms/d/e/${GOOGLE_FORM_ID}/formResponse`,
+        {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: body.toString(),
+        }
+      );
+    } catch (_) {
+      // no-cors mode suppresses errors — submission succeeds silently
+    }
+
     setSubmitted(true);
+    setSubmitting(false);
   };
 
   return (
