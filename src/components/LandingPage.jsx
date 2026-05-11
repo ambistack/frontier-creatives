@@ -15,7 +15,7 @@ const Pill = ({ icon, children }) => (
   </div>
 );
 
-const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl }) => (
+const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl, tall }) => (
   <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
     <div className={`grid lg:grid-cols-12 gap-8 ${videoUrl ? 'items-start' : 'items-stretch'}`}>
       <div className="lg:col-span-8 flex flex-col justify-between min-h-[20rem] md:min-h-[34rem]">
@@ -32,15 +32,28 @@ const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl }) => (
 
       <div className={`lg:col-span-4 border border-brand-blue text-brand-blue flex flex-col ${videoUrl ? 'h-auto' : 'min-h-[24rem] md:min-h-[34rem]'}`}>
         {videoUrl ? (
-          <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
-            <iframe
-              src={videoUrl}
-              className="absolute inset-0 w-full h-full"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-              title={typeof cta === 'string' ? cta : ''}
-            />
-          </div>
+          tall ? (
+            <div className="relative w-full overflow-hidden" style={{ height: 'clamp(28rem, 60vw, 44rem)' }}>
+              <iframe
+                src={videoUrl}
+                className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+                style={{ width: '180%', height: '100%' }}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title={typeof cta === 'string' ? cta : ''}
+              />
+            </div>
+          ) : (
+            <div className="relative w-full" style={{ paddingTop: '56.25%' }}>
+              <iframe
+                src={videoUrl}
+                className="absolute inset-0 w-full h-full"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                title={typeof cta === 'string' ? cta : ''}
+              />
+            </div>
+          )
         ) : (
           <div className="flex-1 bg-brand-stone flex flex-col items-center justify-center text-center p-6 relative overflow-hidden">
             <GuidanceIcon name="recording" className="w-20 h-20 md:w-32 md:h-32" />
@@ -182,6 +195,7 @@ export default function LandingPage() {
         body="A short introduction to Frontier Creatives: why the room exists, who it is for, and why creative professionals need a better place to learn together."
         cta="Watch intro"
         videoUrl="https://player.vimeo.com/video/1191272020"
+        tall
       />
 
       <VideoStorySection
