@@ -15,7 +15,7 @@ const Pill = ({ icon, children }) => (
   </div>
 );
 
-const VideoStorySection = ({ eyebrow, title, body, cta }) => (
+const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl }) => (
   <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
     <div className="grid lg:grid-cols-12 gap-8 items-stretch">
       <div className="lg:col-span-8 flex flex-col justify-between min-h-[20rem] md:min-h-[34rem]">
@@ -31,16 +31,28 @@ const VideoStorySection = ({ eyebrow, title, body, cta }) => (
       </div>
 
       <div className="lg:col-span-4 border border-brand-blue text-brand-blue min-h-[24rem] md:min-h-[34rem] flex flex-col">
-        <div className="flex-1 bg-brand-stone flex flex-col items-center justify-center text-center p-6 relative overflow-hidden">
-          <GuidanceIcon name="recording" className="w-20 h-20 md:w-32 md:h-32" />
-          <div className="mt-5 uppercase tracking-[0.18em] text-[10px] md:text-xs font-black">
-            video embed placeholder
+        {videoUrl ? (
+          <div className="flex-1 relative overflow-hidden">
+            <iframe
+              src={videoUrl}
+              className="absolute inset-0 w-full h-full"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowFullScreen
+              title={typeof cta === 'string' ? cta : ''}
+            />
           </div>
-          <div className="absolute inset-x-5 bottom-5 border-t border-brand-blue pt-3 flex justify-between uppercase tracking-[0.18em] text-[9px] font-black">
-            <span>YouTube / Vimeo</span>
-            <span>16:9</span>
+        ) : (
+          <div className="flex-1 bg-brand-stone flex flex-col items-center justify-center text-center p-6 relative overflow-hidden">
+            <GuidanceIcon name="recording" className="w-20 h-20 md:w-32 md:h-32" />
+            <div className="mt-5 uppercase tracking-[0.18em] text-[10px] md:text-xs font-black">
+              video embed placeholder
+            </div>
+            <div className="absolute inset-x-5 bottom-5 border-t border-brand-blue pt-3 flex justify-between uppercase tracking-[0.18em] text-[9px] font-black">
+              <span>YouTube / Vimeo</span>
+              <span>16:9</span>
+            </div>
           </div>
-        </div>
+        )}
 
         <button className="border-t border-brand-blue py-4 uppercase tracking-[0.2em] text-xs font-black hover:bg-brand-blue hover:text-brand-cream transition-colors">
           {cta} →
@@ -176,6 +188,7 @@ export default function LandingPage() {
         title={<>what we<br />value.</>}
         body="A statement of taste and operating principles: curiosity, generosity, process transparency, craft, useful experimentation, and shipping real work."
         cta="Watch values"
+        videoUrl="https://player.vimeo.com/video/1191120732"
       />
 
       <VideoStorySection
