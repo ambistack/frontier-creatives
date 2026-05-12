@@ -129,11 +129,15 @@ export default function LandingPage() {
           </div>
           <div className="flex gap-1 sm:gap-2">
             <div className="hidden sm:flex gap-2">
-              <FlipPill />
+              <a href="https://luma.com/FrontierCreatives" target="_blank" rel="noopener noreferrer">
+                <FlipPill />
+              </a>
               <Pill icon="meeting">new here?</Pill>
             </div>
             <div className="sm:hidden">
-              <GuidanceIcon name="calendar" className="w-5 h-5" />
+              <a href="https://luma.com/FrontierCreatives" target="_blank" rel="noopener noreferrer">
+                <GuidanceIcon name="calendar" className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </header>
