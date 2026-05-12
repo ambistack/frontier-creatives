@@ -142,7 +142,7 @@ export default function LandingPage() {
           </div>
         </header>
 
-        <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-start pt-6 pb-10">
+        <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
           <div className="col-span-12 lg:col-span-9">
             <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase">
               frontier<br />creatives
