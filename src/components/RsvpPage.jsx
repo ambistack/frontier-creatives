@@ -236,7 +236,7 @@ export default function RsvpPage() {
         </div>
 
         <div className="grid md:grid-cols-12 gap-5 border-t border-brand-blue pt-5">
-          <p className="md:col-span-12 text-xl sm:text-2xl md:text-4xl leading-[0.95] tracking-[-0.06em] font-black max-w-5xl">
+          <p className="md:col-span-12 text-xl sm:text-2xl md:text-4xl leading-[0.95] tracking-[-0.03em] font-black max-w-5xl">
             Frontier Creatives is a high-signal gathering for designers, engineers, creative technologists, founders, and AI-native builders exploring the future of digital work.
           </p>
         </div>
@@ -267,7 +267,7 @@ export default function RsvpPage() {
         {submitted ? (
           <div className="mt-12 border border-brand-blue p-8 md:p-14 min-h-[20rem] flex flex-col items-center justify-center text-center">
             <GuidanceIcon name="entry" className="w-24 h-24 md:w-32 md:h-32 text-brand-blue" />
-            <p className="mt-6 text-3xl sm:text-4xl md:text-6xl leading-[0.9] tracking-[-0.07em] font-black">
+            <p className="mt-6 text-3xl sm:text-4xl md:text-6xl leading-[0.9] tracking-[-0.03em] font-black">
               You&rsquo;re on the list.<br />Thank you.
             </p>
             <p className="mt-5 text-lg sm:text-xl font-black tracking-[-0.03em] text-black/60 max-w-lg">
