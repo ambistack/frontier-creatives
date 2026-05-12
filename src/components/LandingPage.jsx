@@ -140,24 +140,24 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
           <div className="col-span-12 lg:col-span-9">
-            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase select-none">
+            <h1 className="text-[22vw] lg:text-[13.5vw] tracking-[-0.105em] font-black lowercase select-none" style={{ lineHeight: 1 }}>
               {/* "frontier" — each letter steps diagonally down-right */}
-              <div className="flex overflow-visible">
+              <div className="flex overflow-visible" style={{ marginBottom: '-0.15em' }}>
                 {'frontier'.split('').map((letter, i) => (
                   <span
                     key={i}
-                    style={{ display: 'inline-block', transform: `translateY(${i * 0.055}em) translateX(${i * 0.01}em)` }}
+                    style={{ display: 'inline-block', transform: `translateY(${i * 0.09}em)` }}
                   >
                     {letter}
                   </span>
                 ))}
               </div>
-              {/* "creatives" — continues the diagonal from where "frontier" left off */}
+              {/* "creatives" — sits close below, with its own fresh diagonal */}
               <div className="flex overflow-visible">
                 {'creatives'.split('').map((letter, i) => (
                   <span
                     key={i}
-                    style={{ display: 'inline-block', transform: `translateY(${(i + 8) * 0.055}em) translateX(${(i + 8) * 0.01}em)` }}
+                    style={{ display: 'inline-block', transform: `translateY(${i * 0.09}em)` }}
                   >
                     {letter}
                   </span>
