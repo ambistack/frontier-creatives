@@ -16,7 +16,7 @@ const Pill = ({ icon, children }) => (
   </div>
 );
 
-const FLIP_FRAMES = ['Next session:', 'May 27th'];
+const FLIP_FRAMES = ['May 27th', 'View Calendar'];
 
 const FlipPill = () => {
   const [index, setIndex] = useState(0);
@@ -37,7 +37,7 @@ const FlipPill = () => {
   return (
     <div className="flex items-center gap-3 border border-brand-blue px-3 py-2 text-brand-blue uppercase tracking-[0.16em] text-[10px] md:text-xs font-black">
       <GuidanceIcon name="calendar" className="w-6 h-6 shrink-0" />
-      <span className="relative overflow-hidden" style={{ width: '7.2em', height: '1.2em' }}>
+      <span className="relative overflow-hidden" style={{ width: '8.5em', height: '1.2em' }}>
         <span
           className={`absolute inset-x-0 ${exiting ? 'animate-slide-out' : 'animate-slide-in'}`}
         >
@@ -144,29 +144,8 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-start pt-6 pb-10">
           <div className="col-span-12 lg:col-span-9">
-            <h1 className="text-[22vw] lg:text-[13.5vw] tracking-[-0.105em] font-black lowercase select-none" style={{ lineHeight: 1 }}>
-              {/* "frontier" — each letter steps diagonally down-right */}
-              <div className="flex overflow-visible" style={{ marginBottom: '-0.15em' }}>
-                {'frontier'.split('').map((letter, i) => (
-                  <span
-                    key={i}
-                    style={{ display: 'inline-block', transform: `translateY(${i * 0.09}em)` }}
-                  >
-                    {letter}
-                  </span>
-                ))}
-              </div>
-              {/* "creatives" — sits close below, with its own fresh diagonal */}
-              <div className="flex overflow-visible">
-                {'creatives'.split('').map((letter, i) => (
-                  <span
-                    key={i}
-                    style={{ display: 'inline-block', transform: `translateY(${i * 0.09}em)` }}
-                  >
-                    {letter}
-                  </span>
-                ))}
-              </div>
+            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase">
+              frontier<br />creatives
             </h1>
           </div>
           <aside className="col-span-12 lg:col-span-3 text-brand-blue lg:self-stretch flex flex-col sm:flex-row lg:flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-brand-blue pt-6 lg:pt-0 lg:pl-8">
