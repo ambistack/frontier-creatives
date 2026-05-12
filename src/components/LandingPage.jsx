@@ -54,7 +54,7 @@ const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl, tall }) => (
       <div className="lg:col-span-8 flex flex-col justify-between min-h-[20rem] md:min-h-[34rem]">
         <div>
           <NumberTag>{eyebrow}</NumberTag>
-          <h2 className="mt-5 text-[13vw] sm:text-[11vw] md:text-[19vw] lg:text-[10.5vw] leading-[0.74] tracking-[-0.105em] font-black lowercase">
+          <h2 className="mt-5 text-[13vw] sm:text-[11vw] md:text-[19vw] lg:text-[10.5vw] leading-[0.74] tracking-[-0.03em] font-black lowercase">
             {title}
           </h2>
         </div>
@@ -109,12 +109,7 @@ const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl, tall }) => (
 );
 
 export default function LandingPage() {
-  const principles = [
-    { num: "01", icon: "eye", title: "observe", body: "Read the new creative stack before it becomes default behavior." },
-    { num: "02", icon: "gallery", title: "compose", body: "Turn references, systems, and taste into usable visual language." },
-    { num: "03", icon: "chat", title: "exchange", body: "Talk through process with people shipping work in public." },
-    { num: "04", icon: "entry", title: "enter", body: "Leave with a workflow, prototype, or asset you can reuse." }
-  ];
+
 
   return (
     <main className="min-h-screen bg-brand-cream text-black font-sans selection:bg-brand-blue selection:text-white overflow-hidden">
@@ -168,28 +163,11 @@ export default function LandingPage() {
             <Pill icon="clock">10 min intro</Pill>
             <Pill icon="recording">lightning demos</Pill>
             <Pill icon="coffee">conversation</Pill>
-            <Pill icon="card">invite only</Pill>
+            <a href="/rsvp" className="flex items-center gap-3 border border-brand-blue px-3 py-2 uppercase tracking-[0.16em] text-[10px] md:text-xs font-black bg-brand-blue text-brand-cream rotate-[2deg] hover:rotate-[3deg] hover:scale-105 transition-all duration-300 ease-out shadow-[2px_4px_0_0_rgba(36,75,255,0.2)] hover:shadow-[3px_6px_0_0_rgba(36,75,255,0.15)]">
+              <GuidanceIcon name="card" className="w-6 h-6 shrink-0" />
+              <span>Join Now</span>
+            </a>
           </div>
-        </div>
-      </section>
-
-      {/* Principles Grid */}
-      <section className="px-5 md:px-10 py-8 border-t border-brand-blue">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 border border-brand-blue">
-          {principles.map((item, index) => (
-            <article key={item.title} className={`min-h-60 sm:min-h-72 p-5 md:p-7 border-brand-blue flex flex-col justify-between ${
-              index !== principles.length - 1 ? 'border-b sm:border-b-0 sm:border-r' : ''
-            }`}>
-              <div className="flex justify-between items-start text-brand-blue">
-                <NumberTag>{item.num}</NumberTag>
-                <GuidanceIcon name={item.icon} className="w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20" />
-              </div>
-              <div>
-                <h2 className="text-4xl sm:text-5xl md:text-6xl leading-[0.8] tracking-[-0.08em] font-black lowercase">{item.title}</h2>
-                <p className="mt-4 text-sm sm:text-base md:text-lg leading-tight max-w-xs">{item.body}</p>
-              </div>
-            </article>
-          ))}
         </div>
       </section>
 
@@ -198,7 +176,7 @@ export default function LandingPage() {
         <div className="grid lg:grid-cols-12 gap-8 items-end">
           <div className="lg:col-span-7">
             <NumberTag>next session</NumberTag>
-            <h2 className="mt-4 text-[14vw] sm:text-[14vw] md:text-[18vw] lg:text-[10vw] leading-[0.76] tracking-[-0.105em] font-black lowercase">
+            <h2 className="mt-4 text-[14vw] sm:text-[14vw] md:text-[18vw] lg:text-[10vw] leading-[0.76] tracking-[-0.03em] font-black lowercase">
               ai motion<br />design lab
             </h2>
           </div>
@@ -213,7 +191,7 @@ export default function LandingPage() {
                 Build an explainer, steal the workflow, remix the system.
               </p>
               <a href="/rsvp" className="mt-8 w-full border border-brand-blue text-brand-blue py-4 uppercase tracking-[0.2em] text-xs font-black hover:bg-brand-blue hover:text-brand-cream transition-colors text-center block">
-                Request invite →
+                Join Frontier Creatives →
               </a>
             </div>
           </div>

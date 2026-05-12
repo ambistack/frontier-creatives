@@ -213,7 +213,7 @@ export default function RsvpPage() {
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
           <div className="col-span-12 lg:col-span-9">
             <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase">
-              request<br />an invite.
+              join frontier<br />creatives.
             </h1>
           </div>
           <aside className="col-span-12 lg:col-span-3 text-brand-blue lg:self-stretch flex flex-col sm:flex-row lg:flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-brand-blue pt-6 lg:pt-0 lg:pl-8">
@@ -245,13 +245,13 @@ export default function RsvpPage() {
       {/* ——— SECTION 2 — RSVP INTRO ——— */}
       <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
         <div className="max-w-4xl">
-          <NumberTag>about the rsvp</NumberTag>
-          <p className="mt-6 text-3xl sm:text-4xl md:text-7xl leading-[0.88] tracking-[-0.07em] font-black lowercase">
+          <NumberTag>about joining</NumberTag>
+          <p className="mt-6 text-3xl sm:text-4xl md:text-7xl leading-[0.88] tracking-[-0.03em] font-black lowercase">
             We&rsquo;re intentionally building a thoughtful room.
           </p>
           <div className="mt-8 border-t border-brand-blue/30 pt-8">
             <p className="text-lg sm:text-xl md:text-2xl leading-[1.15] tracking-[-0.03em] font-black max-w-3xl text-black/70">
-              The RSVP process helps us understand who&rsquo;s attending, what people are exploring, and how we can create the best possible experience for everyone involved.
+              This helps us understand who&rsquo;s attending, what people are exploring, and how we can create the best possible experience for everyone involved.
             </p>
           </div>
         </div>
@@ -260,7 +260,7 @@ export default function RsvpPage() {
       {/* ——— SECTION 3 — RSVP FORM ——— */}
       <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
         <NumberTag>the form</NumberTag>
-        <h2 className="mt-4 text-[12vw] md:text-[8vw] leading-[0.78] tracking-[-0.105em] font-black lowercase">
+        <h2 className="mt-4 text-[12vw] md:text-[8vw] leading-[0.78] tracking-[-0.03em] font-black lowercase">
           tell us<br />about you.
         </h2>
 
@@ -268,7 +268,7 @@ export default function RsvpPage() {
           <div className="mt-12 border border-brand-blue p-8 md:p-14 min-h-[20rem] flex flex-col items-center justify-center text-center">
             <GuidanceIcon name="entry" className="w-24 h-24 md:w-32 md:h-32 text-brand-blue" />
             <p className="mt-6 text-3xl sm:text-4xl md:text-6xl leading-[0.9] tracking-[-0.07em] font-black">
-              Request received.<br />Thank you.
+              You&rsquo;re on the list.<br />Thank you.
             </p>
             <p className="mt-5 text-lg sm:text-xl font-black tracking-[-0.03em] text-black/60 max-w-lg">
               We review every submission personally. You&rsquo;ll hear from us soon.
@@ -480,8 +480,8 @@ export default function RsvpPage() {
       <section className="px-5 md:px-10 py-10 md:py-16 border-t border-brand-blue">
         <div className="max-w-3xl">
           <NumberTag>ready?</NumberTag>
-          <p className="mt-4 text-[12vw] md:text-[8vw] leading-[0.78] tracking-[-0.105em] font-black lowercase">
-            join the room.
+          <p className="mt-4 text-[12vw] md:text-[8vw] leading-[0.78] tracking-[-0.03em] font-black lowercase">
+            join frontier creatives.
           </p>
           {!submitted && (
             <>
@@ -495,7 +495,7 @@ export default function RsvpPage() {
                     : 'text-brand-blue hover:bg-brand-blue hover:text-brand-cream'
                 }`}
               >
-                {submitting ? 'Submitting...' : 'Request Invite →'}
+                {submitting ? 'Submitting...' : 'Join Frontier Creatives →'}
               </button>
               <p className="mt-5 text-base sm:text-lg tracking-[-0.02em] font-black text-black/50 max-w-lg leading-[1.15]">
                 Attendance is intentionally curated to preserve a thoughtful, high-signal environment.
