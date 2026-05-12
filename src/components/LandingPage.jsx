@@ -140,8 +140,29 @@ export default function LandingPage() {
 
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
           <div className="col-span-12 lg:col-span-9">
-            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase">
-              frontier<br />creatives
+            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase select-none">
+              {/* "frontier" — each letter steps diagonally down-right */}
+              <div className="flex overflow-visible">
+                {'frontier'.split('').map((letter, i) => (
+                  <span
+                    key={i}
+                    style={{ display: 'inline-block', transform: `translateY(${i * 0.055}em) translateX(${i * 0.01}em)` }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
+              {/* "creatives" — continues the diagonal from where "frontier" left off */}
+              <div className="flex overflow-visible">
+                {'creatives'.split('').map((letter, i) => (
+                  <span
+                    key={i}
+                    style={{ display: 'inline-block', transform: `translateY(${(i + 8) * 0.055}em) translateX(${(i + 8) * 0.01}em)` }}
+                  >
+                    {letter}
+                  </span>
+                ))}
+              </div>
             </h1>
           </div>
           <aside className="col-span-12 lg:col-span-3 text-brand-blue lg:self-stretch flex flex-col sm:flex-row lg:flex-col justify-between gap-6 border-t lg:border-t-0 lg:border-l border-brand-blue pt-6 lg:pt-0 lg:pl-8">
