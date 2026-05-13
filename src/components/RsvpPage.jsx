@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import GuidanceIcon from './GuidanceIcon';
-import { getSupabase } from '@/lib/supabase';
+import { getSupabase } from '../lib/supabase';
 
 // ——— Reused Design System Primitives ———
 
