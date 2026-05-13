@@ -491,7 +491,7 @@ export default function RsvpPage() {
       <section className="px-5 md:px-10 py-10 md:py-16 border-t border-brand-blue">
         <div className="max-w-3xl">
           <NumberTag>ready?</NumberTag>
-          <p className="mt-4 text-[12vw] md:text-[8vw] leading-[0.78] tracking-normal font-black lowercase">
+          <p className="mt-4 text-[12vw] md:text-[8vw] leading-[0.85] tracking-[0.02em] font-black lowercase">
             join frontier creatives.
           </p>
           {!submitted && (
