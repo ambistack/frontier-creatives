@@ -132,7 +132,9 @@ export default function LandingPage() {
               <a href="https://luma.com/FrontierCreatives" target="_blank" rel="noopener noreferrer">
                 <FlipPill />
               </a>
-              <Pill icon="meeting">new here?</Pill>
+              <a href="/rsvp">
+                <Pill icon="meeting">new here?</Pill>
+              </a>
             </div>
             <div className="sm:hidden">
               <a href="https://luma.com/FrontierCreatives" target="_blank" rel="noopener noreferrer">

@@ -223,7 +223,7 @@ export default function RsvpPage() {
 
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
           <div className="col-span-12 lg:col-span-9">
-            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.03em] font-black lowercase">
+            <h1 className="text-[18vw] lg:text-[11vw] leading-[0.73] tracking-[-0.03em] font-black lowercase">
               join frontier<br />creatives.
             </h1>
           </div>
