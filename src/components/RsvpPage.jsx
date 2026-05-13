@@ -207,18 +207,20 @@ export default function RsvpPage() {
         <header className="flex items-center justify-between border-b border-brand-blue pb-4 text-brand-blue">
           <div className="flex items-center gap-3 uppercase text-[10px] sm:text-xs tracking-[0.22em] font-black">
             <GuidanceIcon name="location" className="w-6 h-6 sm:w-8 sm:h-8" />
-            <span className="hidden sm:inline">
-              <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Pioneer Square Labs</a>
-              {' '}• Seattle
-            </span>
-            <span className="sm:hidden">
-              <a href="https://www.psl.com/" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">PSL</a>
-              {' '}• Seattle
-            </span>
+            <a href="https://luma.com/FrontierCreatives" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Seattle</a>
           </div>
-          <a href="/" className="text-[10px] sm:text-xs tracking-[0.22em] font-black uppercase hover:underline underline-offset-4">
-            ← Home
-          </a>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <a
+              href="#rsvp-form"
+              className="flex items-center gap-3 border border-brand-blue px-3 py-2 uppercase tracking-[0.16em] text-[10px] md:text-xs font-black bg-brand-blue text-brand-cream rotate-[2deg] hover:rotate-[3deg] hover:scale-105 transition-all duration-300 ease-out shadow-[2px_4px_0_0_rgba(36,75,255,0.2)] hover:shadow-[3px_6px_0_0_rgba(36,75,255,0.15)]"
+            >
+              <GuidanceIcon name="card" className="w-5 h-5 shrink-0" />
+              <span>Fill Out Form</span>
+            </a>
+            <a href="/" className="text-[10px] sm:text-xs tracking-[0.22em] font-black uppercase hover:underline underline-offset-4">
+              ← Home
+            </a>
+          </div>
         </header>
 
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
@@ -269,7 +271,7 @@ export default function RsvpPage() {
       </section>
 
       {/* ——— SECTION 3 — RSVP FORM ——— */}
-      <section className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue">
+      <section id="rsvp-form" className="px-5 md:px-10 py-10 md:py-14 border-t border-brand-blue scroll-mt-6">
         <NumberTag>the form</NumberTag>
         <h2 className="mt-4 text-[12vw] md:text-[8vw] leading-[0.78] tracking-[-0.03em] font-black lowercase">
           tell us<br />about you.

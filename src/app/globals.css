@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 @keyframes slide-out-down {
   0% {
     transform: translateY(0);
