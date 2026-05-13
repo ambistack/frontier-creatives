@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import GuidanceIcon from './GuidanceIcon';
+import { getSupabase } from '@/lib/supabase';
 
 // ——— Reused Design System Primitives ———
 
@@ -156,37 +157,47 @@ export default function RsvpPage() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     if (e) e.preventDefault();
     if (submitting) return;
     setSubmitting(true);
 
-    const params = new URLSearchParams();
-    params.set('entry.2023085978', form.fullName);
-    params.set('entry.1996128041', form.email);
-    params.set('entry.1468278510', form.link);
-    form.role.forEach((r) => params.append('entry.464828348', r));
-    params.set('entry.632376268', form.aiTools);
-    params.set('entry.840674314', form.building);
-    params.set('entry.283705538', form.hopes);
-    params.set('entry.1452363108', (() => {
-      const map = { yes: 'Yes', maybe: 'Maybe', 'not-yet': 'Not yet' };
-      return map[form.presentation] || '';
-    })());
-    params.set('entry.1032852867', form.heardFrom);
-    params.set('entry.252203705', (() => {
-      const map = { employed: 'Full-time employed', freelance: 'Freelance / independent', founder: 'Founder / building something', student: 'Student', exploring: 'Exploring new opportunities', other: 'Other' };
-      return map[form.situation] || '';
-    })());
+    const presentationMap = { yes: 'Yes', maybe: 'Maybe', 'not-yet': 'Not yet' };
+    const situationMap = {
+      employed: 'Full-time employed',
+      freelance: 'Freelance / independent',
+      founder: 'Founder / building something',
+      student: 'Student',
+      exploring: 'Exploring new opportunities',
+      other: 'Other',
+    };
 
-    window.open(
-      'https://docs.google.com/forms/d/1PcokaTU6DN_-VEtIK9ibeKniUuoOf7YtBkvHN-EZUW0/viewform?usp=pp_url&' +
-        params.toString(),
-      '_blank'
-    );
+    try {
+      const supabase = getSupabase();
+      const { error } = await supabase.from('rsvp_submissions').insert([
+        {
+          full_name: form.fullName,
+          email: form.email,
+          link: form.link || null,
+          roles: form.role,
+          ai_tools: form.aiTools,
+          building: form.building,
+          hopes: form.hopes,
+          presentation: presentationMap[form.presentation] || null,
+          heard_from: form.heardFrom || null,
+          situation: situationMap[form.situation] || null,
+        },
+      ]);
 
-    setSubmitted(true);
-    setSubmitting(false);
+      if (error) throw error;
+
+      setSubmitted(true);
+    } catch (err) {
+      console.error('Submission error:', err);
+      alert('Something went wrong submitting your form. Please try again.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
