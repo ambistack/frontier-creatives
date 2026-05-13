@@ -223,7 +223,7 @@ export default function RsvpPage() {
 
         <div className="grid grid-cols-12 gap-4 md:gap-8 flex-1 items-center py-10">
           <div className="col-span-12 lg:col-span-9">
-            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.105em] font-black lowercase">
+            <h1 className="text-[22vw] lg:text-[13.5vw] leading-[0.73] tracking-[-0.03em] font-black lowercase">
               join frontier<br />creatives.
             </h1>
           </div>
@@ -491,7 +491,7 @@ export default function RsvpPage() {
       <section className="px-5 md:px-10 py-10 md:py-16 border-t border-brand-blue">
         <div className="max-w-3xl">
           <NumberTag>ready?</NumberTag>
-          <p className="mt-4 text-[12vw] md:text-[8vw] leading-[0.85] tracking-[0.02em] font-black lowercase">
+          <p className="mt-4 text-[12vw] md:text-[8vw] leading-[0.85] tracking-[-0.05em] font-black lowercase">
             join frontier creatives.
           </p>
           {!submitted && (
