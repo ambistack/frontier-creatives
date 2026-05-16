@@ -118,7 +118,7 @@ const ROLE_OPTIONS = [
 // ——— Event detail pills ———
 
 const EVENT_DETAILS = [
-  { icon: 'location', label: 'Pioneer Square Labs • Seattle' },
+  { icon: 'location', label: 'Seattle Central College' },
   { icon: 'calendar', label: 'Monthly gatherings' },
   { icon: 'recording', label: 'Lightning demos' },
   { icon: 'coffee', label: 'Workflow breakdowns' },
@@ -207,7 +207,7 @@ export default function RsvpPage() {
         <header className="flex items-center justify-between border-b border-brand-blue pb-4 text-brand-blue">
           <div className="flex items-center gap-3 uppercase text-[10px] sm:text-xs tracking-[0.22em] font-black">
             <GuidanceIcon name="location" className="w-6 h-6 sm:w-8 sm:h-8" />
-            <a href="https://luma.com/FrontierCreatives" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Seattle</a>
+            <a href="https://maps.google.com/?q=Seattle+Central+College,+1701+Broadway,+Seattle,+WA+98122" target="_blank" rel="noopener noreferrer" className="hover:underline underline-offset-4">Seattle Central College</a>
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <a
