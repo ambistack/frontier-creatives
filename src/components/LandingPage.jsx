@@ -100,9 +100,9 @@ const VideoStorySection = ({ eyebrow, title, body, cta, videoUrl, tall }) => (
           </div>
         )}
 
-        <button className="border-t border-brand-blue py-4 uppercase tracking-[0.2em] text-xs font-black hover:bg-brand-blue hover:text-brand-cream transition-colors">
+        <a href="https://luma.com/x1futy5p" target="_blank" rel="noopener noreferrer" className="border-t border-brand-blue py-4 uppercase tracking-[0.2em] text-xs font-black hover:bg-brand-blue hover:text-brand-cream transition-colors text-center block">
           {cta} →
-        </button>
+        </a>
       </div>
     </div>
   </section>
