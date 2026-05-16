@@ -522,7 +522,7 @@ export default function RsvpPage() {
               <p className="mt-5 text-base sm:text-lg tracking-[-0.02em] font-black text-black/50 max-w-lg leading-[1.15]">
                 Attendance is intentionally curated to preserve a thoughtful, high-signal environment.
               </p>
-              <div className="mt-4">
+              <div className="mt-8">
                 <a
                   href="https://luma.com/FrontierCreatives?e=evt-vPEKpbdUoXlk7Ib"
                   target="_blank"
