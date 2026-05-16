@@ -3,6 +3,10 @@ import './globals.css';
 export const metadata = {
   title: 'Frontier Creatives — wayfinding for the new creative stack',
   description: 'A live room for designers, builders, and AI-native creatives. Learn what changed. See the workflow. Make the thing.',
+  icons: {
+    icon: '/favicon-frontier-creatives.png',
+    apple: '/favicon-frontier-creatives.png',
+  },
 };
 
 export const viewport = {
