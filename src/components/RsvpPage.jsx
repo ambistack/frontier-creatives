@@ -211,6 +211,15 @@ export default function RsvpPage() {
           </div>
           <div className="flex items-center gap-2 sm:gap-3">
             <a
+              href="https://luma.com/x1futy5p"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 border border-brand-blue px-3 py-2 uppercase tracking-[0.16em] text-[10px] md:text-xs font-black text-brand-blue hover:bg-brand-blue/10 transition-colors"
+            >
+              <GuidanceIcon name="calendar" className="w-5 h-5 shrink-0" />
+              <span>May 27th Event</span>
+            </a>
+            <a
               href="#rsvp-form"
               className="flex items-center gap-3 border border-brand-blue px-3 py-2 uppercase tracking-[0.16em] text-[10px] md:text-xs font-black bg-brand-blue text-brand-cream rotate-[2deg] hover:rotate-[3deg] hover:scale-105 transition-all duration-300 ease-out shadow-[2px_4px_0_0_rgba(36,75,255,0.2)] hover:shadow-[3px_6px_0_0_rgba(36,75,255,0.15)]"
             >
