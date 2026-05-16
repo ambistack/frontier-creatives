@@ -519,15 +519,17 @@ export default function RsvpPage() {
               >
                 {submitting ? 'Submitting...' : 'Join Frontier Creatives →'}
               </button>
-              <a
-                href="https://luma.com/FrontierCreatives?e=evt-vPEKpbdUoXlk7Ib"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-4 inline-flex items-center gap-3 border border-brand-blue px-10 py-5 uppercase tracking-[0.2em] text-xs sm:text-sm font-black text-brand-blue hover:bg-brand-blue hover:text-brand-cream transition-colors"
-              >
-                <GuidanceIcon name="calendar" className="w-5 h-5 shrink-0" />
-                Register on Luma →
-              </a>
+              <div className="mt-4">
+                <a
+                  href="https://luma.com/FrontierCreatives?e=evt-vPEKpbdUoXlk7Ib"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-3 border border-brand-blue px-10 py-5 uppercase tracking-[0.2em] text-xs sm:text-sm font-black text-brand-blue hover:bg-brand-blue hover:text-brand-cream transition-colors"
+                >
+                  <GuidanceIcon name="calendar" className="w-5 h-5 shrink-0" />
+                  Register on Luma →
+                </a>
+              </div>
               <p className="mt-5 text-base sm:text-lg tracking-[-0.02em] font-black text-black/50 max-w-lg leading-[1.15]">
                 Attendance is intentionally curated to preserve a thoughtful, high-signal environment.
               </p>
