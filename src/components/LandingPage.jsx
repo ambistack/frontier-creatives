@@ -202,7 +202,7 @@ export default function LandingPage() {
         eyebrow="film 01 / orientation"
         title={<>who we<br />are.</>}
         body="A short introduction to Frontier Creatives: why the room exists, who it is for, and why creative professionals need a better place to learn together."
-        cta="Watch intro"
+        cta="Register On Luma"
         videoUrl="https://player.vimeo.com/video/1191281532"
         tall
       />
@@ -211,7 +211,7 @@ export default function LandingPage() {
         eyebrow="film 02 / principles"
         title={<>what we<br />value.</>}
         body="A statement of taste and operating principles: curiosity, generosity, process transparency, craft, useful experimentation, and shipping real work."
-        cta="Watch values"
+        cta="Register On Luma"
         videoUrl="https://player.vimeo.com/video/1191272020"
         tall
       />
@@ -220,7 +220,7 @@ export default function LandingPage() {
         eyebrow="film 03 / field notes"
         title={<>inside the<br />event.</>}
         body="A preview of the format: quick intro, lightning demos, live workflow breakdowns, open discussion, and room for people to meet through the work."
-        cta="Watch format"
+        cta="Register On Luma"
         videoUrl="https://player.vimeo.com/video/1191288057"
         tall
       />
